@@ -40,6 +40,16 @@ format:
     revealjs-plugins:
       - pointer
 
+project:
+  type: website
+  output-dir: docs # GitHub Pages 通常从 docs 文件夹中读取内容
+
+website:
+  title: "大数据时代教学、科研、出版的新范式"
+  navbar:
+    left:
+      - href: index.qmd
+        text: "Home"
 #filters: 
 #  - reveal-auto-agenda
 #auto-agenda:
