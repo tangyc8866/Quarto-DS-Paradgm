@@ -1,0 +1,1977 @@
+---
+title: "大数据时代教学、科研、出版的新范式"
+subtitle: 以数据分析为中心的全场景生态建设探索
+institute: "华东师范大学"
+author: "汤银才"
+date: "`r Sys.Date()`"
+# from: markdown+emoji
+format:
+  metropolis-revealjs: 
+    html-math-method: katex
+    transition: slide
+    background-transition: fade
+    logo: images/statLogo-02.png #rlogo.png  #images/quarto.png statLogo-02.png
+#    footer: "[汤银才, ECNU](https://faculty.ecnu.edu.cn/_s35/tyc/main.psp)&nbsp;&nbsp;&nbsp;"
+#    theme: [metropolis.scss]
+    reveal-header:
+#      sc-sb-title: true
+#      header-logo: images/statLogo-02.png
+#      subtitle-as-header: true
+    include-in-header: 
+      - mathjax_HEP.html
+    title-slide-attributes:
+      data-background-image: images/slidecover2.jpeg
+#      data-background-size: contain      
+    toc: true 
+    toc-depth: 1
+    toc-title: 目录
+    margin: 0.05
+    width: 1600  # default 1050
+    height: 900  # default 700
+    code-overflow: wrap # scroll
+    slide-number: true
+#    embed-resources: true  # obtain self-contained HTML
+    slide-level: 3
+    chalkboard: 
+      boardmarker-width: 5
+    menu: true
+    pointer:
+      - # set pointer configuration options here
+    revealjs-plugins:
+      - pointer
+
+#filters: 
+#  - reveal-auto-agenda
+#auto-agenda:
+#  bullets: numbered
+#  heading: "目录"
+#jupyter: julia-1.9
+
+#题目：数据科学引领下统计教学、科研与出版范式变革的探索
+#摘要：以生成式人工智能为特点的大语言模型的出现给大数据时代贴上了新的标签，开启了统计和数据科学人才培养体系与机制的探讨。基于开源或低成本的技术工具打造一个兼具高标准化和个性化的灵活的文学化统计编程架构，探索建立数据驱动的教学、科研和出版新范式，时机与技术已经成熟。它将为多学科交叉提供便利，有助于培养符合市场需求的数据分析人才。本报告将从一个从事教学和科研多年的老师的角度，分享自己的一些想法，并通过一些具体的案例说明自己在如何高效率、高质量地进行教学、科研和出版方面正在做的一些尝试。
+#主讲人：汤银才教授，简介：华东师范大学教授，博士生导师，《Statistical Theory and Related Fields》执行主编，《应用概率统计》编辑部主任, 中国现场统计研究会大数据统计分会常务理事、副秘书长，中国现场统计研究会可靠性工程分会常务理事、副理事长，中国运筹学会可靠性分会常务理事、中国现场统计研究会计算统计分会理事、上海市工业与应用数学会理事，主要从事可靠性统计及贝叶斯统计理论与应用研究，主持国家自然科学基金4项，作为子课题负责人参与国家自然科学基金重大项目与重点项目三项，完成包括华为机器有限公司、罗氏制药、中国航天第八研究院在内的企业横向项目20多项，在国内外学术刊物上发表论文100多篇，著有《R语言与统计分析》、《可靠性统计》、《贝叶斯统计》，译著6本。先后获得华为上海研究所优秀技术成果奖，华东师范大学研究生教育优秀教师奖，上海市科学技术三等奖，上海市教育发展基金会申银万国奖，华东师范大学优秀任课教师奖，上海市教学成果三等奖，上海市科技进步三等奖，全国统计科学技术进步二等奖，上海市统计科学研究成果课题类一等奖等荣誉。
+
+---
+
+
+
+### 自我介绍 --- 主要工作与兴趣
+
+::: columns
+
+::: {.column width="28%"}
+
+- 从教40年(1985-现在)
+- 研究兴趣
+
+  - 贝叶斯统计与
+  - 可靠性分析
+  
+- R 与$\TeX$的深度玩家与推广者，中国 R 会议(上海)的发起人之一
+- 管理二本期刊
+
+  - 统计理论及其应用(STARF)，执行主编
+  - 应用概率统计(APS), 编辑部主任
+:::
+
+::: {.column width="28%"}
+
+```{r}
+#| echo: FALSE
+#| out.width: "80%"
+#| fig.align: 'center'
+knitr::include_graphics("./loc-figs/STARF-Cover-New.jpg")
+```
+  - 17年国际创刊, 21年国内创刊
+  - 19年入选《中国科技期刊卓越行动计划》高起点新刊项目
+  - 被Scopus，CSCD, DOAJ，ESCI收录
+  - 入选数学领域高质量科技期刊分级目录(T3)
+
+:::
+
+::: {.column width="28%"}
+
+```{r}
+#| echo: FALSE
+#| out.width: "85%"
+#| fig.align: 'center'
+knitr::include_graphics("./loc-figs/APS-1.jpg")
+```
+  - 1985年创刊
+  - 被CSCD，北大核心等收录
+  - 入选数学领域高质量科技期刊分级目录(T3)
+:::
+
+:::
+
+
+### 自我介绍 --- 教材
+
+::: columns
+::: {.column width="28%"}
+
+- 国内第一本R语言教材
+- 第二版(2023)有大幅更新
+```{r}
+#| echo: FALSE
+#| out.width: "99%"
+#| fig.align: 'center'
+#| layout-nrow: 2
+knitr::include_graphics("./loc-figs/R-BookV2.jpg")
+```
+:::
+
+::: {.column width="28%"}
+- 可靠性统计教材
+```{r}
+#| echo: FALSE
+#| out.width: "98%"
+#| fig.align: 'center'
+#| layout-nrow: 3
+knitr::include_graphics("./loc-figs/Reliability-Book.jpg")
+```
+:::
+
+::: {.column width="28%"}
+- 贝叶斯统计教材
+- 新版即将完成
+  
+```{r}
+#| echo: FALSE
+#| out.width: "90%"
+#| fig.align: 'center'
+#| layout-nrow: 3
+knitr::include_graphics("./loc-figs/Bayes-Book.jpg")
+```
+:::
+
+:::
+
+### 自我介绍 --- 译著
+
+::: columns
+::: {.column width="28%"}
+
+- INLA系列从书
+- 更多译著正在推进中
+  - [Bayesian Modeling using WinBUGS]{.small}
+  - [Statistical Methods for Reliability Data, 2E]{.small}
+
+```{r}
+#| echo: FALSE
+#| out.width: "75%"
+#| fig.align: 'center'
+#| layout-nrow: 2
+knitr::include_graphics("./loc-figs/INLA-Book1.jpg")
+```
+:::
+
+::: {.column width="28%"}
+```{r}
+#| echo: FALSE
+#| out.width: "60%"
+#| fig.align: 'center'
+#| layout-nrow: 3
+knitr::include_graphics("./loc-figs/INLA-Book2.jpg")
+knitr::include_graphics("./loc-figs/INLA-Book3.jpg")
+```
+:::
+
+::: {.column width="28%"}
+
+```{r}
+#| echo: FALSE
+#| out.width: "60%"
+#| fig.align: 'center'
+#| layout-nrow: 3
+knitr::include_graphics("./loc-figs/INLA-Book4.jpg")
+knitr::include_graphics("./loc-figs/INLA-Book5.jpg")
+```
+:::
+
+:::
+
+
+# I. 一些思考与想法 {background-image=images/bdbg.jpg}
+
+## 1.1. 引言 {background-image=images/slidecover.png}
+
+
+### [思考 ]{.red}: 大数据时代我们学习与科研的效率如何？
+
+ 我们在学习、教学、科研过程中会
+
+. . .
+
+::: columns
+::: {.column width="45%"}
+
+- 与各类知识打交道，浏览许多资料
+
+  - pdf 文档
+  - html 文档
+  - 电子书
+  
+- 与数据打交道，查看图表
+
+- 与程序打交道，做可视化和数据分析
+
+- 目标: 完成各类任务
+  
+  - 写报告
+  - 写学术论文
+  - 撰写毕业论文
+  - 出版学术专著
+
+
+:::
+
+
+::: {.column width="45%"}
+
+- 用什么工具? 
+
+  - Word/WPS
+  - $\LaTeX$
+  - ... ?
+
+
+- 怎么提高生产率？ 
+
+:::
+
+:::
+
+
+
+### [场景1 ]{.red}: 大数据时代如何打造一个高效的教学与科研生态?
+
+ 目标: 赋能教学与科研
+
+. . .
+
+::: columns
+::: {.column width="45%"}
+
+- [通过标准化与个性化的权衡]{.content-box-red}
+
+- 建立教学与科研的生态
+
+- 提升教学与科研的效率
+
+
+:::
+
+::: {.column width="45%"}
+
+- 标准化，[要？]{.red}
+
+- 个性化，[怎么做？]{.red}
+
+- 标准化基础上个性化，[可落地?]{.red}
+
+:::
+
+:::
+
+. . .
+
+答案：[文学化统计编程 ]{.center .content-box-red}
+
+. . .
+
+::: columns
+::: {.column width="45%"}
+
+- 编程与写作融合 ([knitr]{.blue})
+
+    -  [[编程]{.blue}(code)]{.content-box-red}
+
+    -  [[写作]{.blue}(prose)]{.content-box-red}
+
+:::
+
+::: {.column width="45%"}
+
+- [标准化定制]{.content-box-red}
+
+    - CSS/SCSS 定制
+    
+    - $\TeX$ 定制
+
+:::
+
+:::
+
+
+
+
+### [场景2 ]{.red}: 如何打造一个高效的数据科学写作/出版系统?
+
+- 目标: 赋能期刊与图书出版
+
+. . .
+
+
+::: columns
+::: {.column width="45%"}
+
+- [通过Quarto平台]{.content-box-red}
+
+    - 使编程与写作融为一体
+
+    - 建立作者与出版社的桥梁
+
+    - 为读者提供良好的阅读场景
+
+
+:::
+
+::: {.column width="45%"}
+
+- [多格式出版]{.content-box-red}
+
+    - PDF
+
+    - HTML
+
+    - ePub
+    
+    - Word
+    
+
+
+:::
+
+:::
+
+
+
+## 1.2. 编程语言的选择? {background-image=images/slidecover.png}
+
+
+### 编程/分析工具应具备的品质
+
+::: columns
+::: {.column width="45%"}
+
+- 极易入门(基本功能简单)
+
+- 费用低廉(免费)
+
+- 代码开放/开源(共享)
+
+- 无平台限制(共享)
+
+- 求助方便
+
+:::
+
+::: {.column width="45%"}
+
+- 良好生态与社区
+
+- 数据分析高效(工具包)
+
+- 可视化容易而强(工具包)
+
+- 编程能力强(可扩展性)
+
+- 有卓越的IDE
+
+:::
+
+:::
+
+
+### [过去]{.red}与[现在]{.red}的统计软件
+
+
+::: columns
+::: {.column width="45%"}
+
+
+- Excel
+
+- [SAS]{.red} (好贵，好重)
+
+- [Matlab]{.red}
+
+- SPSS
+
+- Minitab
+
+- Fortran
+
+- Eviews
+
+- Stata
+
+:::
+
+::: {.column width="45%"}
+
+
+- [R]{.content-box-red}
+
+- [Python]{.content-box-red}
+
+- [Julia]{.content-box-red}
+
+- [Shiny/Observable]{.content-box-red}---动态可视化
+
+:::
+
+:::
+
+### 三大开源语比较: R, Python, Julia
+
+
+```{r}
+#| label: fig-comp3
+#| fig.cap: 编程语言性能比较(相对于C=1.0)
+#| fig.align: 'center'
+#| echo: FALSE
+#| out.width: "65%"
+knitr::include_graphics("./loc-figs/HPC-julia2.jpg")
+```
+
+
+
+### R与Python的比较
+
+::: columns
+::: {.column width="45%"}
+
+[R:]{.content-box-red} - [倚天剑]{.content-box-green}
+
+1. 一种[解释性程序语言]{.red}，专注于统计建模与数据分析
+1. 拥有丰富的[统计计算]{.red}和[数据可视化]{.red}包
+1. 良好的社区和开源生态系统非常活跃，已经大量R包(超过[2万]{.red})
+1. 轻松地处理大型数据集和矩阵(借助R包)
+1. 可实现和Python的pandas媲美的高速数据处理能力
+1. 缺点: [效率相对较低]{.red}
+1. [主要是统计学院的选择]{.content-box-green}
+
+
+:::
+
+::: {.column width="45%"}
+
+[Python:]{.content-box-red} -  [屠龙刀]{.content-box-green}
+
+1. 一种[通用的编译语言]{.red}，可用于机器学习
+1. 拥有丰富的[机器学习、深度学习]{.red}库
+1. 社区和开源生态系统也非常活跃，有大量的开源库([12万]{.red})
+1. 支持多线程和分布式计算，可更好地处理大规模数据集
+1. 拥有更多的库(如NumPy和Pandas等)，可以实现更加高效的编程
+1. 缺点: [统计计算/建模]{.red}能力偏弱
+1. [主要是工程类学院的选择]{.content-box-red}
+:::
+
+:::
+
+
+
+## 1.3. 写作工具的选择? {background-image=images/slidecover.png}
+
+### 写作工具的选择?
+
+- Word/WPS
+
+. . .
+
+- $\LaTeX$
+
+  - TeXlive
+  - Overleaf，示例: [ECNU本科毕业论文模板](https://www.overleaf.com/project/66849279fae8720d32590ec4)
+
+. . . 
+
+- Markdown
+
+. . .
+
+::: columns
+::: {.column width="45%"}
+
+1. 一种轻量级标记语言
+
+1. 目标：实现“易读易写”
+
+1. 转换成结构化的HTML(超文本标记语言)
+
+1. 语法简单易懂易学
+
+1. 主流的平台几乎都使用/支持
+
+:::
+
+::: {.column width="45%"}
+
+
+- [ChatGPT]{.red}/[Kimi]{.red}/[ChatGLM]{.red}/...
+
+- Github
+
+- Jupyter Notebook
+
+- [Typora]{.red} (推荐使用)
+
+- ... ... 
+
+:::
+
+:::
+
+
+## 1.4. 我们要感谢的人！{background-image=images/slidecover.png}
+
+### Donald Knuth (高德纳) 
+
+::: columns
+::: {.column width="45%"}
+
+- [$\TeX$的鼻祖]{.blue}
+- 美国科学院院士, 美国工程院院士, 英国、法国、挪威和德国科学院的外籍院士.
+斯坦福大学荣誉退休教授
+- 通常写作与编程是分离的，整个过程会涉及大量繁琐的[复制和粘贴]{.blue}
+- 观点: 文章应该是由文本与代码(chunks)组成的流构成
+
+    - 代码对结果(图、表格等)格式化
+    - 文本解释所发生的
+    - 两者编织(knitr)形成人与机器可读的文章
+
+:::
+
+
+::: {.column width="45%"}
+
+```{r, out.width='20%', fig.show='hold',  echo=FALSE, fig.align='center'}
+knitr::include_graphics("./loc-figs/knuth.gif")
+```
+```{r, out.width='90%', fig.show='hold',  echo=FALSE,}
+knitr::include_graphics("./loc-figs/lp3.jpg")
+```
+
+```{r, out.width='90%', fig.show='hold',  echo=FALSE,}
+knitr::include_graphics("./loc-figs/lp2.jpg")
+```
+
+:::
+
+:::
+
+
+
+### R的创始人
+
+::: columns
+::: {.column width="35%"}
+
+
+```{r, echo=FALSE, out.width = "99%"}
+knitr::include_graphics("./loc-figs/UAucland.jpeg")
+```
+
+:::
+
+::: {.column width="55%"}
+
+```{r, echo=FALSE, out.width = "99%"}
+knitr::include_graphics("./loc-figs/RR.png")
+```
+
+:::
+
+:::
+
+
+
+### Hardley Wickham
+
+
+::: columns
+::: {.column width="28%"}
+
+- [重构了R的新生态]{.blue}
+- [一个改变 R的人](https://zhuanlan.zhihu.com/p/77570704)
+- [2019年COPSS总统奖获得者](http://hadley.nz/) 
+
+```{r, echo=FALSE, out.width = "99%"}
+knitr::include_graphics("./loc-figs/Hadley.png")
+```
+
+:::
+
+::: {.column width="28%"}
+
+- 著有R数据可视化畅销书ggplot2 (3E)
+```{r, echo=FALSE, out.width = "92%"}
+knitr::include_graphics("./loc-figs/Hardleybook1.jpeg")
+```
+
+:::
+
+::: {.column width="28%"}
+
+- 著有数据科学领域的畅销书 [R for Data Science, 2E ](https://r4ds.hadley.nz/)
+```{r, echo=FALSE, out.width = "95%"}
+knitr::include_graphics("./loc-figs/Hardleybook2.png")
+```
+
+:::
+
+:::
+
+
+
+### Hardley Wickham: packages created
+
+```{r, echo=FALSE, out.width = "100%"}
+knitr::include_graphics("./loc-figs/Harleypks1.jpg")
+```
+
+### Guido van Rossum
+
+
+::: columns
+::: {.column width="28%"}
+
+- [Python 之父]{.blue}，见[他的故事](https://techapple.com/archives/10553)
+- 荷兰程序员，曾供职于google，现任职于dropbox
+- 1982年，在阿姆斯特丹大学获得数学和计算机科学硕士学位
+- 2001年度自由软件进步奖
+- 2006年，ACM认定为著名工程师
+- 1989年12月， 为了打发圣诞节的空余时间，编写一个以ABC语言作为基础的电脑程式语言，并以Python命名
+- Python 亦为称为「胶水语言」（glue language），因为它提供了丰富的API和工具
+:::
+
+::: {.column width="28%"}
+
+```{r, echo=FALSE, out.width = "99%"}
+knitr::include_graphics("./loc-figs/Guido van Rossum.png")
+```
+
+:::
+
+::: {.column width="28%"}
+- 2016年, 在语言编程排行中，Python升至第五名
+- 2017年, Python首次超越R成为数据分析、数据科学和机器学习领域的No.1
+
+```{r, echo=FALSE, out.width = "95%"}
+knitr::include_graphics("./loc-figs/Python2016.png")
+knitr::include_graphics("./loc-figs/Python>R.png")
+```
+
+:::
+
+:::
+
+
+### Wes McKinney
+
+
+::: columns
+::: {.column width="52%"}
+
+- [成就Python在AI中的地位]{.blue}, 见[主页](https://wesmckinney.com/)
+- 毕业于MIT，杜克大学的数学和统计学两个博士学位
+- 曾供职于Ursa Labs,  Cloudera, DataPad, AQR等公司
+- Pandas的创建者, 并借助AI的风力，青云直上
+- Apache Arrow的创建者，是跨语言共享科学数据主要格式
+
+```{r, echo=FALSE, out.width = "55%", fig.align='center'}
+knitr::include_graphics("./loc-figs/Wes McKinney.png")
+```
+
+:::
+
+::: {.column width="36%"}
+- 著有数据科学领域的畅销书[Python for Data Analysis, 3E (2022)](https://wesmckinney.com/book/)
+
+```{r, echo=FALSE, out.width = "95%",fig.align='center'}
+knitr::include_graphics("./loc-figs/Pythonfordataanalytics.png")
+```
+
+:::
+
+:::
+
+
+
+### 文学化编程的践行者 
+
+- [谢益辉]{.blue}: 2009年 John M. Chambers奖获得者
+- knitr, animation, bookdown, blogdown, pagedown, xaringan, tinytex 等R包的作者
+- 自我评价: [随机漫步十八年的傻瓜](https://slides.yihui.org/2020-random-walk.html)
+
+. . .
+
+::: columns
+::: {.column width="25%"}
+
+
+```{r, echo=FALSE, out.width = "95%"}
+knitr::include_graphics("./loc-figs/yihui.png")
+```
+
+:::
+
+::: {.column width="62%"}
+
+
+
+```{r, echo=FALSE, out.width = "99%"}
+knitr::include_graphics("./loc-figs/yihuibooks.jpg")
+```
+:::
+
+:::
+
+
+# II. 文学化统计编程的实现 {background-image=images/bdbg.jpg}
+
+## 2.1. 文学化统计编程的核心工具/技术 {background-image=images/slidecover.png}
+
+### 核心工具/技术
+::: columns
+::: {.column width="45%"}
+
+1. IDE: Rstudio/VS Code/Jupyter nootbook
+    
+    - 语法高亮显示
+    - 代码自动补全
+    - 支持UTF-8编码
+    - 支持Rmd/Qmd
+  
+
+2. R/Quarto Markdown
+
+    - 几乎万能的(文学化写作)工具
+    - 完美整合R，TeX 和 Markdown
+    
+
+:::
+
+::: {.column width="45%"}
+
+3. knitr
+
+    - 支持
+        - [多种编程语言, 如 `R`, `Python`, `Julia`, `Observable`]{.smaller}
+        - [markup语言, 如`TeX`, `HTML`, `Markdown`]{.smaller}
+
+4. [Pandoc](http://pandoc.org)
+
+    - 万能格式转换器([瑞士军刀]{.blue})
+
+:::
+
+:::
+
+
+
+###  Quarto IDE
+
+
+- [Rstudio]{.red}: Rstudio/Posit  (2022年)  推出了一个基于R的数据分析平台
+- [VS Code]{.red}: Erich Gamma推出，微软维护 
+- [Jupyter notebook]{.red}: 支持超过40种编程语言的交互式计算
+
+
+```{r}
+#| label: fig-posit
+#| echo: false
+#| out.width: "60%"
+#| fig.cap: "Rstudio到Posit"
+knitr::include_graphics("./loc-figs/posit-rebrand2022.jpeg")
+```
+
+
+###  Rstudio介绍  
+
+::: columns
+::: {.column width="45%"}
+
+- 开源免费，优秀的代码编辑器
+  
+- 可[成倍成倍]{.red}提高数据分析的效率
+  
+- 最好的跨平台IDE
+
+- 集成多个R/Quarto Markdown文档类型/模板
+
+- Visual 与 Source 两种编辑模式自由切换
+
+
+:::
+
+::: {.column width="45%"}
+
+```{r}
+#| label: fig-rstudio
+#| echo: false
+#| out.width: "90%"
+#| fig.cap: "Rstudio界面"
+#| fig.align: 'center'
+knitr::include_graphics("./loc-figs/Rstudio-Windows.jpg")
+```
+
+:::
+
+:::
+
+
+###  VS Code介绍  
+
+::: columns
+::: {.column width="45%"}
+
+- 开源免费，优秀的跨平台IDE
+  
+- 可.red[成倍成倍]提高编程的效率
+  
+- 优秀的跨平台TeX/R/Python/... IDE
+
+- 海量的插件
+
+- 灵活方便的个性化定制
+
+- Visual 与 Source 两种编辑模式自由切换
+
+:::
+
+::: {.column width="45%"}
+
+```{r}
+#| label: fig-vscode
+#| echo: false
+#| out.width: "99%"
+#| fig.cap: "VS Code界面"
+#| fig.align: 'center'
+knitr::include_graphics("./loc-figs/VScode.png")
+```
+
+:::
+
+:::
+
+### Quarto Markdown {.smaller}
+
+根据 [Posit](https://posit.co/) (前身为 RStudio):
+
+  - 全新打造: 下一代的RMarkdown，与R Markdown类似,  于2021年1月开始开发，2022年12月发布第一版
+
+  - 基于 [Pandoc]{.red} 构建的开源的出版系统
+
+  - 功能更加强大和灵活: 适用于数据分析和机器学习等领域
+
+  - 支持[代码块]{.red}执行: [R, Python，Julia，JavaScript Observable]{.red} 等
+  
+  - 支持多格式输出: PDF、HTML、$\LaTeX$、Word等
+
+  - 支持自定义: CSS、JavaScript和$\LaTeX$模板
+
+  - 支持优秀的IDE: VS Code, Rstudio (具备可视化编程)及Jupyter notebook
+
+. . .
+
+从技术的角度来看 ([Mock, 2022](https://jthomasmock.github.io/quarto-2hr-webinar/materials/01-intro-quarto.html#/so-what-is-quarto)):
+
+> 一个**命令行界面**(CLI)，[将混合格式文件(`.ipynb`/Jupyter 笔记本)或纯文本文件(`.qmd`、`.rmd`、`.md`）]{.fragment}[以不同的格式(PDF/Word/HTML等)]{.fragment}[渲染(render)成不同的输出(报告、书籍、网站、演示文稿等)]{.fragment}. 
+
+
+
+
+## 2.2. 文学化统计编程的要素 {background-image=images/slidecover.png}
+
+### 数学公式
+
+通过$\TeX$/[MathJax](https://www.mathjax.org/)/KaTeX 实现
+
+``` tex
+$$
+\frac{\partial C}
+     { \partial t} 
+     + \frac{1}{2}\sigma^2 S^2
+\frac{\partial^2 C}
+     {\partial C^2}
+     + r S 
+       \frac{\partial C}
+            {\partial S}
+      \ = r C 
+$$ {#eq-black-scholes}
+```
+
+$$
+\frac{\partial C}
+     { \partial t} 
+     + \frac{1}{2}\sigma^{2} S^{2}
+\frac{\partial^{2} C}
+     {\partial C^2}
+     + r S 
+       \frac{\partial C}
+            {\partial S}
+      \ = r C 
+$$ {#eq-black-scholes}
+
+
+
+
+### 执行R代码
+
+::: columns
+::: {.column width="45%"}
+
+```{r}
+#| echo: TRUE
+#| eval: FALSE
+par(mar = c(4, 4, 1, .1))
+fit = lm(dist ~ 1 + speed, 
+         data = cars)
+plot(cars, pch = 19, 
+     col = 'blue', las = 1)
+abline(fit, lwd = 2)
+```
+
+:::
+
+::: {.column width="45%"}
+
+```{r}
+#| label: fig-regression
+#| echo: false
+#| eval: true
+#| out.width: "99%"
+#| fig.cap: "R图形: 回归分析"
+#| fig.align: 'center'
+par(mar = c(4, 4, 1, .1))
+fit = lm(dist ~ 1 + speed, 
+         data = cars)
+plot(cars, pch = 19, 
+     col = 'blue', las = 1)
+abline(fit, lwd = 2)
+```
+
+:::
+
+:::
+
+
+### 执行Python代码
+
+::: columns
+::: {.column width="45%"}
+
+```{r, echo=TRUE}
+library(reticulate)
+```
+```{python}
+#| echo: TRUE
+#| eval: FALSE
+import matplotlib.pyplot as plt
+import numpy as np
+t = np.arange(0.0, 2.0, 0.01)
+s = 1 + np.sin(2*np.pi*t)
+plt.plot(t, s)
+plt.grid(True)
+plt.show()
+plt.close("all")
+```
+
+:::
+
+::: {.column width="45%"}
+
+```{python}
+#| label: fig-python
+#| echo: false
+#| eval: true
+#| out.width: "99%"
+#| fig.cap: "Python图形"
+#| fig.align: 'center'
+import matplotlib.pyplot as plt
+import numpy as np
+t = np.arange(0.0, 2.0, 0.01)
+s = 1 + np.sin(2*np.pi*t)
+plt.plot(t, s)
+plt.grid(True)
+plt.show()
+plt.close("all")
+```
+
+:::
+
+:::
+
+
+
+### 表格输出: kable 
+```{r}
+#| label: tbl-kable 
+#| eval: TRUE
+#| echo: TRUE
+#| tidy: FALSE
+#| comment: ""
+require('knitr')
+kable(head(iris,8), format = "html", caption = "鸢尾花数据")
+```
+
+
+### 常用chunk选项 
+
+
+|选项|取值|含义  |
+|:----|:----:|:------|
+| eval | TRUE; FALSE | 执行或不执行代码|
+| echo|  TRUE; FALSE | 显示/隐藏源代码|
+| warning|  TRUE; FALSE | 显示/隐藏警告文本|
+| error|  TRUE; FALSE | 错误消息 |
+| emssage|  TRUE; FALSE |是否保留message()给出的消息|
+| tidy|  TRUE; FALSE | 代码重排, 由formatR包支持|
+| prompt|  TRUE; FALSE | 是否在R代码中添加代码|
+| comment|  '##'; 字符串 | 在R代码前添加注释符|
+| fig.width| 数字, 英寸  | 设置图形的宽度与高度|
+| fig.height| 数字, 英寸 | 设置图形的宽度与高度|
+
+: Chunk选项 {#tbl-chunkopts}
+
+### 代码块选项设置
+
+- knitr对代码的处理通过其中的选项控制
+
+. . .
+
+::: columns
+::: {.column width="45%"}
+
+::: callout-tip
+
+- rmarkdown中的设置
+
+```r
+label=fig-regression,
+echo=false, 
+eval=true, 
+out.width = "99%",
+fig.cap = "R图形: 回归分析", 
+fig.align = 'center'
+par(mar = c(4, 4, 1, .1))
+fit = lm(dist ~ 1 + speed, data = cars)
+plot(cars, pch = 19, col = 'blue', las = 1)
+abline(fit, lwd = 2)
+```
+
+:::
+
+:::
+::: {.column width="45%"}
+
+::: callout-note
+
+- quarto中的设置
+
+
+```r
+#| label: fig-regression2
+#| echo: false
+#| eval: true
+#| out.width: "99%"
+#| fig.cap: "R图形: 回归分析"
+#| fig.align: 'center'
+par(mar = c(4, 4, 1, .1))
+fit = lm(dist ~ 1 + speed, data = cars)
+plot(cars, pch = 19, col = 'blue', las = 1)
+abline(fit, lwd = 2)
+```
+
+:::
+
+:::
+
+:::
+
+
+## 2.3. Quarto 介绍 {background-image=images/slidecover.png}
+
+### 调用 quarto: Rstudio/Jupyter nootbook/VS Code) 上运行 {.smaller}
+
+::: r-stack
+![](images/rstudio-preview.png){.fragment width="1300" fig-alt="A screenshot of a Quarto document rendered inside RStudio"}
+
+![](images/jupyterlab-preview.png){.fragment width="1300" fig-alt="A screenshot of a Quarto document rendered inside JupyterLab"}
+
+![](images/python-vscode.png){.fragment width="1300" fig-alt="A screenshot of a Quarto document rendered inside VSCode"}
+:::
+
+### quarto 能做更多 {.scrollable}
+
+::: aside
+更多例子参见 [Quarto gallery](https://quarto.org/docs/gallery/) 
+:::
+
+::: panel-tabset
+### 文档
+
+::: columns
+::: {.column width="42%"}
+高度定制输出布局丰富的html, docx, pdf形式的文章及报告.
+一些例子:
+
+-   Tufte格式的输出 (in [HTML](https://quarto-dev.github.io/quarto-gallery/page-layout/tufte.html) and [PDF](https://quarto-dev.github.io/quarto-gallery/page-layout/tufte.pdf))
+-   模板定制的多页文档(便于打印) ([source](https://github.com/nmfs-opensci/quarto_titlepages/blob/main/titlepages/bg-image/article.qmd), [PDF](https://nmfs-opensci.github.io/quarto_titlepages/titlepages/bg-image/article.pdf))
+-   Docx 文档 ([source](https://github.com/quarto-dev/quarto-gallery/blob/main/articles/msword/msword.qmd), [output](https://quarto-dev.github.io/quarto-gallery/articles/msword/msword.docx))
+
+:::
+
+::: {.column width="42%"}
+<!-- [![](images/gallery_document_tufte.png)](https://quarto-dev.github.io/quarto-gallery/page-layout/tufte.html) -->
+
+[![图片来源: Quarto gallery](images/gallery_documents.png)](https://quarto.org/docs/gallery/)
+:::
+
+:::
+
+### 演示文稿
+
+::: columns
+::: {.column width="42%"}
+幻灯片: 
+
+- [beamer](https://latex-beamer.com/)  
+- [revealjs](https://revealjs.com/)
+:::
+
+::: {.column width="42%"}
+[![](images/quarto_gallery_slides.png)](https://jthomasmock.github.io/quarto-2hr-webinar/materials/01-intro-quarto.html)
+:::
+:::
+
+### 项目
+
+::: columns
+::: {.column width="42%"}
+Combine several `*.qmd` files + `_quarto.yml` with config (project type, structure, properties).
+
+-   网站
+    -   Quarto 网站 ([source](https://github.com/quarto-dev/quarto-web), [output](https://quarto.org))
+-   图书
+    -   用数据讲故事 ([source](https://github.com/RohanAlexander/telling_stories), [output](https://tellingstorieswithdata.com/))
+-   博客
+    -   quarto 小贴士 ([source](https://mine-cetinkaya-rundel.github.io/quarto-tip-a-day/), [output](https://mine-cetinkaya-rundel.github.io/quarto-tip-a-day/))
+-   维基百科
+
+::: {.callout-note appearance="simple"}
+项目(Project)用 `quarto render` 生成，而不是 `quarto preview`
+
+:::
+:::
+
+::: {.column width="42%"}
+![](images/quarto_gallery_books.png)
+:::
+:::
+:::
+
+
+### 基于Quarto的文学化统计编程流程
+
+```{r}
+#| label: fig-quarto
+#| echo: false
+#| out.width: "80%"
+#| fig.cap: "Quarto 文学化统计编程流程"
+#| fig.align: 'center'
+knitr::include_graphics("./loc-figs/quarto_flow.png")
+```
+
+
+### Quarto工作原理
+
+
+![Quarto工作原理](images/quarto-diagram.drawio.svg)
+
+
+## 2.4. Quarto 代码的展示 {background-image=images/slidecover.png}
+
+
+
+### 代码美化 {auto-animate="true"}
+
+-   超 20 种代码高亮主题
+
+``` r
+# Define a server for the Shiny app
+function(input, output) {
+  
+  # Fill in the spot we created for a plot
+  output$phonePlot <- renderPlot({
+    # Render a barplot
+  })
+}
+```
+
+::: footer
+[更多参见: ]{.small}[Syntax Highlighting](https://quarto.org/docs/output-formats/html-code.html#highlighting)
+:::
+
+### 代码动画 {auto-animate="true"}
+
+``` r
+# Define a server for the Shiny app
+function(input, output) {
+  
+  # Fill in the spot we created for a plot
+  output$phonePlot <- renderPlot({
+    # Render a barplot
+    barplot(WorldPhones[,input$region]*1000, 
+            main=input$region,
+            ylab="Number of Telephones",
+            xlab="Year")
+  })
+}
+```
+
+::: footer
+[更多参见: ]{.small}[Code Animations](https://quarto.org/docs/presentations/revealjs/advanced.html#code-animations)
+:::
+
+
+
+### 代码逐行高亮
+
+- 高亮一些特定的行
+- 逐步突出显示额外的行
+
+``` {.python code-line-numbers="4-5|7|10"}
+import numpy as np
+import matplotlib.pyplot as plt
+r = np.arange(0, 2, 0.01)
+theta = 2 * np.pi * r
+fig, ax = plt.subplots(subplot_kw={'projection': 'polar'})
+ax.plot(theta, r)
+ax.set_rticks([0.5, 1, 1.5, 2])
+ax.grid(True)
+plt.show()
+```
+
+::: footer
+[更多参见: ]{.small}[Line Highlighting](https://quarto.org/docs/presentations/revealjs/#line-highlighting)
+:::
+
+### 代码显示控制: 折叠
+
+```{r}
+#| echo: true
+#| code-fold: true
+#| code-summary: "显示代码"
+#| fig-width: 10
+#| fig-height: 4.5
+library(ggplot2)
+ggplot(mtcars, aes(hp, mpg, color = am)) +
+  geom_point() +
+  geom_smooth(formula = y ~ x, method = "loess")
+```
+
+::: footer
+[更多参见: ]{.small}[HTML Code Blocks](https://quarto.org/docs/output-formats/html-code.html#/)
+:::
+
+### 面板(Tabsets) --- R 代码 {.scrollable transition="convex"}
+
+::: panel-tabset
+### 绘图
+
+```{r}
+#| echo: true
+#| code-fold: true
+#| code-summary: "显示代码"
+library(ggplot2)
+ggplot(mtcars, aes(hp, mpg, color = am)) +
+  geom_point() +
+  geom_smooth(formula = y ~ x, method = "loess")
+```
+
+### 查看数据
+
+```{r}
+#| echo: true
+#| code-fold: true
+#| code-summary: "显示代码"
+knitr::kable(mtcars)
+```
+:::
+
+### 交互变得简单
+
+
+-   浏览器上:
+    -   **htmlwidgets** ([参见文档](https://quarto.org/docs/interactive/widgets/htmlwidgets.html))
+    -   **jupyterwidgets** ([参见文档](https://quarto.org/docs/interactive/widgets/jupyter.html))
+    -   **ObservableJS** ([参见文档](https://quarto.org/docs/interactive/ojs/))
+-   服务器上:
+    -   **shiny** ([参见文档](https://quarto.org/docs/interactive/shiny/))
+    
+
+
+###  交互呈现示例 --- Shiny {transition="convex"} 
+
+::: columns
+::: {.column width="45%"}
+
+```{r}
+#| label: fig-shiny1
+#| echo: false
+#| eval: true
+#| out.width: "99%"
+#| fig.cap: "R Shiny gif 图-1"
+#| fig.align: 'center'
+knitr::include_graphics("./loc-figs/geyser.gif")
+```
+
+:::
+
+::: {.column width="45%"}
+
+
+```{r}
+#| label: fig-shiny2
+#| echo: false
+#| eval: true
+#| out.width: "99%"
+#| fig.cap: "R Shiny gif 图-2"
+#| fig.align: 'center'
+knitr::include_graphics("./loc-figs/caigexplorer.gif")
+```
+
+:::
+
+:::
+
+
+### 交互呈现示例 --- Ovservable (Web可显示) {.scrollable transition="convex"}
+
+[Palmer Penguins](https://allisonhorst.github.io/palmerpenguins/)  数据集，观察企鹅体重随性别和物种的不同而变化.
+
+```{ojs}
+//| panel: input
+viewof bill_length_min = Inputs.range(
+  [32, 50], 
+  {value: 35, step: 1, label: "Bill length (min):"}
+)
+viewof islands = Inputs.checkbox(
+  ["Torgersen", "Biscoe", "Dream"], 
+  { value: ["Torgersen", "Biscoe"], 
+    label: "Islands:"
+  }
+)
+```
+
+
+::: panel-tabset
+### 绘图
+
+```{ojs}
+Plot.rectY(filtered, 
+  Plot.binX(
+    {y: "count"}, 
+    {x: "body_mass_g", fill: "species", thresholds: 20}
+  ))
+  .plot({
+    facet: {
+      data: filtered,
+      x: "sex",
+      y: "species",
+      marginRight: 80
+    },
+    marks: [
+      Plot.frame(),
+    ]
+  }
+)
+```
+
+### 查看数据
+
+```{ojs}
+Inputs.table(filtered)
+```
+
+:::
+
+```{ojs}
+data = FileAttachment("palmer-penguins.csv").csv({ typed: true })
+```
+
+```{ojs}
+filtered = data.filter(function(penguin) {
+  return bill_length_min < penguin.bill_length_mm &&
+         islands.includes(penguin.island);
+})
+```
+
+
+
+
+### 交互呈现示例 --- Plotly 
+
+```{r}
+#| label: interactive
+#| echo: false
+
+# example from https://github.com/jthomasmock/penguin-project/blob/master/02-data-products/crosstalk.rmd
+library(plotly)
+library(magrittr)
+library(dplyr)
+library(crosstalk)
+small_df <- palmerpenguins::penguins %>% 
+  select(species, sex, flipper_length_mm, body_mass_g) %>% 
+  na.omit()
+
+pen_df <- SharedData$new(small_df)
+
+x <- list(title = "Flipper Length (mm)", range = c(170, 240))
+y <- list(title = "Body Mass (g)", range = c(2500, 6500))
+
+plotly_graphic <- plot_ly(pen_df, 
+                          x = ~flipper_length_mm, 
+                          y = ~body_mass_g, 
+                          color = ~species,
+                          text = ~species) %>% 
+  add_markers() %>% 
+  plotly::layout(
+    xaxis = ~x, 
+    yaxis = ~y
+  ) %>%
+  highlight(
+    on = "plotly_selected", 
+    off = "plotly_doubleclick", 
+    persistent = FALSE
+  ) %>% 
+  plotly::config(displaylogo = FALSE)
+
+suppressWarnings({
+  crosstalk::bscols(
+    widths = c(1, 3, 8),
+    htmltools::div(),     # the filters get clipped, this is a hacky way to solve it
+    list(
+        filter_checkbox("sex", "Sex", pen_df, ~sex),
+        filter_checkbox("species", "Species", pen_df, ~species),
+        filter_slider("mass", "Body Mass (g)", pen_df, ~body_mass_g)
+    ),
+    plotly_graphic 
+  )
+})
+```
+
+### 交互呈现示例 --- d3scatter 
+
+```{r}
+#| label: interactive2
+#| code-fold: true
+#| code-summary: "click to expand code"
+
+# if(!require(d3scatter)){devtools::install_github("jcheng5/d3scatter")}; 
+library(d3scatter)
+library(magrittr)
+library(dplyr)
+library(crosstalk)
+
+shared_mtcars <- crosstalk::SharedData$new(mtcars)
+
+crosstalk::bscols(widths = c(3, NA, NA),
+  list(
+    filter_checkbox("cyl", "Cylinders", shared_mtcars, ~cyl, inline = TRUE),
+    filter_slider("hp", "Horsepower", shared_mtcars, ~hp, width = "100%"),
+    filter_select("auto", "Automatic", shared_mtcars, ~ifelse(am == 0, "Yes", "No"))
+  ),
+  d3scatter::d3scatter(shared_mtcars, ~wt, ~mpg, ~factor(cyl), width = "140%", height = 850),
+  d3scatter::d3scatter(shared_mtcars, ~hp, ~qsec, ~factor(cyl), width = "140%", height = 850)
+)
+```
+
+```{=html}
+<!-- 
+# {background-iframe="grid-worms/index.html"} 
+Background for title slide, not working in this version of Quarto -->
+```
+
+
+
+
+# III. 基于Quarto 构建教学、科研、出版/写作的新范式 {background-image=images/bdbg.jpg} 
+
+## 3.1.  Quarto 幻灯片 {background-image=images/slidecover.png}
+
+### Quarto 幻灯片的类型
+
+Quarto 支持多种格式来创建演示文稿，包括：
+
+- [revealjs]{.red} --- reveal.js (HTML), 本演讲稿
+
+- [pptx]{.red} --- PowerPoint (MS Office), 华东师范大学模板
+
+- [beamer]{.red} --- Beamer (LaTeX/PDF), 华东师范大学模板
+
+这些格式各有优缺点。
+
+- Beamer 广为使用，特别适合数学类报告
+
+- revealjs 功能最强大，可以作为HTML幻灯片展示，也可以打印为PDF以便于分发
+
+- pptx 经模板定制后更亲民
+
+### Quarto Beamer 示例
+
+<iframe src="./refs/Beamer-Reliability-2024.pdf" type="application/pdf" width="80%" height="800px"></iframe>
+
+
+### revealjs 的片段类 {.scrollable}选项
+
+
+| **名称**                  | **效果**                                          |
+|:-------------------------|:------------------------------------------------|
+| `fade-out`                | 开始可见，淡出                                 |
+| `fade-up`                 | 向上滑动的同时淡入                              |
+| `fade-down`               | 向下滑动的同时淡入                              |
+| `fade-left`               | 向左滑动的同时淡入                              |
+| `fade-right`              | 向右滑动的同时淡入                              |
+| `fade-in-then-out`        | 先淡入，然后在下一步淡出                        |
+| `fade-in-then-semi-out`   | 淡入，然后在下一步变为半透明                    |
+| `grow`                    | 放大                                             |
+| `semi-fade-out`           | 淡出至半透明                                    |
+| `shrink`                  | 缩小                                             |
+| `strike`                  | 划掉                                             |
+| `highlight-red`           | 文本变为红色                                     |
+| `highlight-green`         | 文本变为绿色                                     |
+| `highlight-blue`          | 文本变为蓝色                                     |
+| `highlight-current-red`   | 文本变为红色，然后在下一步恢复原样               |
+| `highlight-current-green` | 文本变为绿色，然后在下一步恢复原样              |
+| `highlight-current-blue`  | 文本变为蓝色，然后在下一步恢复原样             |
+
+
+
+### 内容分列展示 
+
+将内容按不同宽度分列展示
+
+
+::: columns
+::: {.column width="30%"}
+
+-  Motor Trend汽车道路测试
+
+- 数据摘自1974年的《Motor Trend美国》杂志，包含了32款汽车的燃油消耗和10个设计及性能方面的数据. 
+
+:::
+
+
+::: {.column width="57%"}
+```{r}
+#| echo: true
+#| code-fold: true
+knitr::kable(head(mtcars)[,c("mpg",	"cyl", "disp", "hp", "wt")])
+```
+
+:::
+:::
+
+::: footer
+[更多参见: ]{.small}[Multiple Columns](https://quarto.org/docs/presentations/revealjs/#multiple-columns)
+:::
+
+
+### 列表内容分步展示
+
+列表可以通过`incremental`环境逐步显示
+
+::: incremental
+-   第一条
+-   第二条
+-   第三条
+:::
+
+. . .
+
+::: incremental
+1.   第一条
+1.   第二条
+1.   第三条
+:::
+
+. . . 
+
+插入停顿(三个分开的点`. . .`)，也可以实现逐步显示
+
+::: footer
+[更多参见: ]{.small}[Incremental Lists](https://quarto.org/docs/presentations/revealjs/#incremental-lists)
+:::
+
+### 按片段 (Fragments) 展示
+
+
+<br/>
+
+::: {.fragment .fade-in}
+淡入
+:::
+
+::: {.fragment .fade-up}
+向上滑动的同时淡入
+:::
+
+::: {.fragment .fade-left}
+向左滑动的同时淡入
+:::
+
+::: {.fragment .fade-in-then-semi-out}
+先淡入，然后半透明淡出
+:::
+
+. . .
+
+::: {.fragment .strike}
+删除
+:::
+
+::: {.fragment .highlight-red}
+红色高亮
+:::
+
+::: footer
+[更多参见: ]{.small}[Fragments](https://quarto.org/docs/presentations/revealjs/advanced.html#fragments)
+:::
+
+
+
+### 更换页面主题 (Themes)
+
+Quarto提供10个内嵌的页面更换主题 (也可 [自建合适的页面](https://quarto.org/docs/presentations/revealjs/themes.html#creating-themes))
+
+::: {layout-ncol="2"}
+![](images/moon.png)
+
+![](images/sky.png)
+:::
+
+::: footer
+[更多参见: ]{.small}[Themes](https://quarto.org/docs/presentations/revealjs/themes.html)
+:::
+
+### 更换页面背景 (Backgrounds) {background="#43464B"}
+
+- 属性参数 `background` 或`background-color`可用于改变页面的背景颜色 （支持CSS设定的颜色）
+- 页面背景转换则通过选项 `background-transition`实现
+
+
+### Auto-Animate {auto-animate="true" auto-animate-easing="ease-in-out"}
+
+通过`auto-animate`实现动画自动匹配
+
+::: r-hstack
+::: {data-id="box1" auto-animate-delay="0" style="background: #2780e3; width: 200px; height: 150px; margin: 10px;"}
+:::
+
+::: {data-id="box2" auto-animate-delay="0.1" style="background: #3fb618; width: 200px; height: 150px; margin: 10px;"}
+:::
+
+::: {data-id="box3" auto-animate-delay="0.2" style="background: #e83e8c; width: 200px; height: 150px; margin: 10px;"}
+:::
+:::
+
+::: footer
+[更多参见: ]{.small}[Auto-Animate](https://quarto.org/docs/presentations/revealjs/advanced.html#auto-animate)
+:::
+
+### Auto-Animate {auto-animate="true" auto-animate-easing="ease-in-out"}
+
+通过`auto-animate`实现动画自动匹配
+
+::: r-stack
+::: {data-id="box1" style="background: #2780e3; width: 350px; height: 350px; border-radius: 200px;"}
+:::
+
+::: {data-id="box2" style="background: #3fb618; width: 250px; height: 250px; border-radius: 200px;"}
+:::
+
+::: {data-id="box3" style="background: #e83e8c; width: 150px; height: 150px; border-radius: 200px;"}
+:::
+:::
+
+::: footer
+[更多参见: ]{.small}[Auto-Animate](https://quarto.org/docs/presentations/revealjs/advanced.html#auto-animate)
+:::
+
+### 更改页面过度方式 (Slide Transitions) 
+
+
+| 页面切换参数 | 描述                                                            |
+|------------|------------------------------------------------------------------------|
+| `none`     | 不切换 (默认)   |
+| `fade`     | 淡出到淡入      |
+| `slide`    | 水平切换        |
+| `convex`   | 以外凸的角度展示  |
+| `concave`  | 以凹进的角度展示  |
+| `zoom`     | 从中心开始放大 |
+
+::: footer
+[更多参见:]{.small} [Slide Transitions](https://quarto.org/docs/presentations/revealjs/advanced.html#slide-transitions)
+:::
+
+
+## 3.2. Quarto 书稿/分析报告 {background-image=images/slidecover.png}
+
+### Quarto books {.scrollable}
+
+Quarto Books，新一代bookdown, 将多个文档以章节形式组合起来，并以不同的形式呈现出来
+
+- HTML
+- PDF
+- MS Word
+- EPUB
+<!--
+- AsciiDoc (一种用纯文本编写的标记语言， 借助Asciidoctorstf等工具可将其转换为HTML、PDF、EPUB等格式)
+-->
+
+HTML和PDF是两种主要的形式， 支持章节、公式、图形、表格、参考文献等的交叉引用. 个性化定制分别通过CSS和$\LaTeX$实现. 可通过`quarto publish`命令发布到: 
+
+- [Quarto Pub](https://quarto.org/docs/publishing/quarto-pub.html)
+- [Github Pages](https://quarto.org/docs/publishing/github-pages.html)
+- [Posit Cloud](https://quarto.org/docs/publishing/posit-cloud.html)
+- [RStudio Connect](https://quarto.org/docs/publishing/rstudio-connect.html)
+- 静态服务器或内部网站上
+
+::: footer 
+[更多参见: ]{.small}[Quarto Gallery](https://quarto.org/docs/gallery/#books)
+::: 
+
+### 示例
+
+::: aside
+::: {style="text-align: center; margin-top: 1em"}
+ [Bookdown中文书稿写作手册](https://tangyc8866.github.io/bookdown_tutorial/){preview-link="true" style="text-align: center"}
+:::
+:::
+
+::: panel-tabset
+
+### Quarto中文书稿写作手册(pdf)
+
+<iframe src="./refs/Quarto Book Manual.pdf" type="application/pdf" width="80%" height="600px"></iframe>
+
+### Quarto中文书稿写作手册(html)
+
+<iframe src="./refs/index.html" width="80%" height="600px"></iframe>
+
+:::
+
+
+
+## 3.3. Quarto 毕业论文 {background-image=images/slidecover.png}
+
+### Quarto 毕业论文示例
+
+::: columns
+::: {.column width="45%"}
+
+- Quarto 团队建立了一些毕业论文模板 
+
+  - [Arizona State University](https://github.com/juliantao/quarto-asu-thesis)
+
+  - [Georgia State University](https://github.com/joshuafayallen/gsu-quarto-dissertation-template)
+
+  - [Macquarie University](https://github.com/thomas-fung/mq-thesis-quarto)
+
+  - [University of Edinburgh](https://github.com/james-d-h/quarto-phd-thesis)
+
+  - [University of Leeds](https://github.com/PublicHealthDataGeek/UoL_quarto_thesis)
+
+  - [University of Michigan](https://github.com/kelly-sovacool/rackham)
+
+  - [University of Minnesota](https://github.com/havablair/umn-thesis)
+
+  - [University of Pittsburg](https://github.com/alberto-guzman/quarto-dissertation)
+:::
+
+::: {.column width="45%"}
+- 华东师范大学毕业论文Quarto模板
+
+<iframe src="./refs/华东师范大学毕业论文Quarto模板.pdf" type="application/pdf" width="100%" height="600px"></iframe>
+:::
+
+:::
+
+::: footer 
+[更多参见: ]{.small}[A list of Quarto thesis templates templates](https://github.com/Jupyter4Science/awesome-quarto-thesis?tab=readme-ov-file)
+::: 
+
+
+## 3.4. Quarto 期刊 {background-image=images/slidecover.png}
+
+### Quarto Journals
+
+- 期刊论文创建需要标准化与个性化的协调与统一, 以极大地方便期刊的集约化管理与作者针对不同期刊快速完成论文的创建. 
+
+- Quarto支持创建自定义格式，以扩展基本格式(如pdf、html和docx), 从而灵活地适应各类专业期刊论文的创建. 
+
+- Quarto支持“单一来源发布”，即相同的Quarto文档源能够生成HTML和$\LaTeX$输出，还能够创建适合多个期刊所需的$\LaTeX$输出。实现此功能的关键功能包括：
+
+    - 配合Pandoc，能够灵活地适应期刊提供的本地$\LaTeX$模板;
+
+    - 实现针对HTML输出通过CSS进行定制，针对PDF输出通过LaTeX宏/环境进行定制;
+
+    - 根据各种期刊所需的样式自动格式化作者和隶属关系的标准化模式; 
+
+    - 借助引文样式语言（CSL），根据各种期刊所需的样式自动格式化引文和参考文献.
+    
+::: footer 
+[更多参见: ]{.small}[Quarto Journals](https://quarto.org/docs/journals/#/)
+::: 
+
+
+### Quarto 期刊模板示例
+
+Quarto 团队已经建立的期刊模板
+
+- [ACM](https://github.com/quarto-journals/acm),  [预览](https://quarto-journals.github.io/acm/){preview-link="true" style="text-align: center"}
+
+- [PLOS](https://github.com/quarto-journals/plos),  [预览](https://quarto-journals.github.io/plos/){preview-link="true" style="text-align: center"}
+
+- [ASA](https://github.com/quarto-journals/jasa), [预览](https://quarto-journals.github.io/jasa/){preview-link="true" style="text-align: center"}
+
+- [Elsevier](https://github.com/quarto-journals/elsevier),  [预览](https://quarto-journals.github.io/elsevier/){preview-link="true" style="text-align: center"}
+
+- [Biophysical](https://github.com/quarto-journals/biophysical-journal), [预览](https://quarto-journals.github.io/biophysical-journal/){preview-link="true" style="text-align: center"}
+
+- [ACS](https://github.com/quarto-journals/acs),  [预览](https://quarto-journals.github.io/acs/){preview-link="true" style="text-align: center"}
+
+- [JSS](https://github.com/quarto-journals/jss),  [预览](https://quarto-journals.github.io/jss/){preview-link="true" style="text-align: center"}
+
+- [STARF-Statistical Theory and Related Fields](https://github.com/mikemahoney218/quarto-tandf?tab=readme-ov-file)
+
+- 应用概率统计Quarto模板(建设中)
+
+::: footer 
+[更多参见: ]{.small}[Quarto Journals github](https://github.com/quarto-journals/)
+::: 
+
+
+
+
+------------------------------------------------------------------------
+
+<br> <br>
+
+::: {style="text-align: center; font-size: 2em; color:#6A395B"}
+::: {.absolute top="5%" left="33%"}
+**Thank you!**
+:::
+:::
+
+::: {.absolute top="30%" left="15%" width="70%"}
+::: box
+::: {style="font-size: 1.5em"}
+**Stanley Tang (汤银才)**<br>
+github: [tangyc8866](https://github.com/tangyc8866)<br>
+Homepage: [Homepage](https://faculty.ecnu.edu.cn/_s35/tyc/main.psp)<br>
+Email: yctang@stat.ecnu.edu.cn<br>
+Wechat: tangyincai
+:::
+:::
+:::
+
+
+::: footer
+[本幻灯片由]{.small} [Quarto revealjs](https://quarto.org/) [制作]{.small}
+:::
+
+
+
+# 附录. Quarto revealjs 幻灯片的其他实用功能 {background-color="#01364C"} 
+
+### 超链接预览
+
+- 在不打断演讲流程的情况下导航到超链接
+
+  - 使用 `preview-links` 选项可以在幻灯片上方打开链接
+
+  - 点击右上角的`X`关闭预览
+
+- 示例(点击打开): 
+
+::: {style="text-align: center; margin-top: 1em"}
+[Matplotlib: Visualization with Python](https://matplotlib.org/){preview-link="true" style="text-align: center"}
+:::
+
+::: footer
+[更多参见: ]{.small}[Preview Links](https://quarto.org/docs/presentations/revealjs/presenting.html#preview-links)
+:::
+
+
+### 轻松导航
+
+::: {style="margin-bottom: 0.9em;"}
+
+- 快速跳转到演示文稿的其他部分
+:::
+
+::: {layout="[1, 20]"}
+![](images/presentation-menu.png){width="41"}
+
+使用菜单按钮（幻灯片左下角）切换幻灯片菜单，以访问其他幻灯片和演示工具
+
+:::
+
+- 您也可以按 `m` 键来打开和关闭菜单
+
+
+::: footer
+[更多参见: ]{.small}[Navigation](https://quarto.org/docs/presentations/revealjs/presenting.html#navigation-menu)
+:::
+
+### 黑板(chalkboard) {chalkboard-buttons="true"}
+
+::: {style="margin-bottom: 0.9em;"}
+
+:::
+
+::: {layout="[1, 20]"}
+![](images/presentation-chalkboard.png){width="41"}
+
+使用幻灯片左下角的黑板(chalkboard)按钮来切换黑板的显示, 也可使用按钮`b`来切换黑板
+
+:::
+
+::: {layout="[1, 20]"}
+![](images/presentation-notes-canvas.png){width="41"}
+
+使用幻灯片左下角的笔记画布(notes canvas)按钮来切换在当前幻灯片上的绘图功能， 也可使用按钮`c`来切换笔记画布
+
+:::
+
+
+::: footer
+[更多参见: ]{.small}[Chalkboard](https://quarto.org/docs/presentations/revealjs/presenting.html#chalkboard)
+:::
+
+### 概览模式
+
+按 `o` 键切换到概览模式：
+
+
+![](images/overview-mode.png){.border}
+
+按住 `Alt` 键（或在Macbook中按 `Ctrl` 键），然后点击放大对应的幻灯片
+
+
+### 演讲者视图
+
+按 `s` 键（或使用演示菜单）打开演讲者视图
+
+![](images/speaker-view.png){fig-align="center" style="border: 3px solid #dee2e6;" width="780"}
+
+::: footer
+[更多参见: ]{.small}[Speaker View](https://quarto.org/docs/presentations/revealjs/presenting.html#speaker-view)
+:::
+
