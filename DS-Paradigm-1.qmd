@@ -128,7 +128,7 @@ knitr::include_graphics("./loc-figs/R-BookV2.jpg")
 #| out.width: "98%"
 #| fig.align: 'center'
 #| layout-nrow: 3
-knitr::include_graphics("./loc-figs/Reliability-Book.png")
+knitr::include_graphics("./loc-figs/Re-Book.png")
 ```
 :::
 
